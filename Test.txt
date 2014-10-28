@@ -1,0 +1,143 @@
+/*
+ ============================================================================
+ Name        : Test.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#if 0
+int LSearch(int ar[], int len, int target) {
+	int i;
+	for (i = 0; i < len; i++) {
+		if (ar[i] == target)
+			return i;    // 찾은 대상의 인덱스 값 반환
+	}
+	return -1;    // 찾지 못했음을 의미하는 값 반환
+}
+
+int main(void) {
+	/*
+	int arr[] = { 3, 5, 2, 4, 9 };
+	int idx;
+
+	idx = LSearch(arr, sizeof(arr) / sizeof(int), 4);
+	if (idx == -1)
+	printf("탐색 실패 \n");
+	else
+	printf("타겟 저장 인덱스: %d \n", idx);
+
+	idx = LSearch(arr, sizeof(arr) / sizeof(int), 7);
+	if (idx == -1)
+	printf("탐색 실패 \n");
+	else
+	printf("타겟 저장 인덱스: %d \n", idx);
+
+	return 0;
+	*/
+
+	int student; // 입력 받고자 하는 학생 수
+	int i, input;
+	int *score; // 학생 들의 수학점수 변수
+	int sum = 0; // 총점
+
+	printf("학생의 수는? : ");
+	scanf("%d", &student);
+
+	score = (int *) malloc(sizeof(int) * student);
+
+	for (i = 0; i < student; i++) {
+		printf("학생 %d 의 점수 : ", i);
+		scanf("%d", &input);
+
+		score[i] = input;
+	}
+
+	for (i = 0; i < student; i++) {
+		sum += score[i];
+	}
+
+	printf("전체 학생 평균 점수 : %d \n", sum / student);
+	free(score);
+	return 0;
+}
+
+
+#else if
+int sumFunc(int student)
+{
+	int i = 0;
+	int *score;
+	int sum = 0;
+	int average;
+
+
+	score = (int *)malloc(sizeof(int)*student);
+
+	for(i = 0; i < student; i++)
+	{
+		printf("%d 번째 학생의 점수를 입력하시오 : ", i);
+		scanf("%d", &score[i]);
+		sum += score[i];
+	}
+
+	average = sum/student;
+	free(score);
+	return average;
+}
+
+void main(void) {
+
+	int student;
+	int average;
+
+	student = 0;
+	average = 0;
+
+	printf("총 학생수를 입력하시오 : ");
+	scanf("%d", &student);
+
+	average = sumFunc(student);
+	printf("학생들의 평균점수는 %d 입니다.", average);
+}
+/*
+void main(void) {
+
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	int buff;
+	int array[5];
+
+	while (i < 5) {
+		//puts("input Number!");
+		scanf("%d", &array[i]);
+		i++;
+	}
+
+	while (j < 5) {
+		k = 0;
+		while (k < 5) {
+			if (array[k] > array[k + 1]) {
+				buff = array[k];
+				array[k] = array[k + 1];
+				array[k + 1] = buff;
+			}
+			k++;
+		}
+		j++;
+	}
+
+	printf("%d\n", array[0]);
+	printf("%d\n", array[1]);
+	printf("%d\n", array[2]);
+	printf("%d\n", array[3]);
+	printf("%d\n", array[4]);
+}
+*/
+#endif
