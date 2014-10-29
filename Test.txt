@@ -10,6 +10,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
 
 #if 0
 int LSearch(int ar[], int len, int target) {
@@ -22,7 +24,7 @@ int LSearch(int ar[], int len, int target) {
 }
 
 int main(void) {
-	/*
+
 	int arr[] = { 3, 5, 2, 4, 9 };
 	int idx;
 
@@ -39,32 +41,7 @@ int main(void) {
 	printf("타겟 저장 인덱스: %d \n", idx);
 
 	return 0;
-	*/
 
-	int student; // 입력 받고자 하는 학생 수
-	int i, input;
-	int *score; // 학생 들의 수학점수 변수
-	int sum = 0; // 총점
-
-	printf("학생의 수는? : ");
-	scanf("%d", &student);
-
-	score = (int *) malloc(sizeof(int) * student);
-
-	for (i = 0; i < student; i++) {
-		printf("학생 %d 의 점수 : ", i);
-		scanf("%d", &input);
-
-		score[i] = input;
-	}
-
-	for (i = 0; i < student; i++) {
-		sum += score[i];
-	}
-
-	printf("전체 학생 평균 점수 : %d \n", sum / student);
-	free(score);
-	return 0;
 }
 
 
@@ -93,6 +70,51 @@ int sumFunc(int student)
 
 void main(void) {
 
+	char data[10];
+	char *mydata;
+	int cmpValue;
+	char *modify;
+
+	//gets
+	printf("검색할 문자열을 입력하시오\n");
+	gets(data);
+	puts(data);
+
+	//strcpy
+	mydata = (char *)malloc(sizeof(char) * 10);
+	strcpy(mydata, "mydata");
+	puts(mydata);
+
+
+	//strcmp
+	cmpValue = strcmp(mydata, "mydata");
+	if(cmpValue == 0)	printf("good!\n");
+	else				printf("not good!\n");
+
+	printf("mydata size is %d\n", _msize(mydata));
+
+	//strlen
+	printf("mydata lenth is %d\n", strlen(mydata));
+
+	//strcat
+	strcat(mydata,"abc");
+	printf("mydata lenth is %s\n", mydata);
+
+	//strstr
+	modify = strstr(mydata,"abc");
+	strncpy(modify, "ddd", 3);
+	printf("mydata is %s\n", mydata);
+
+
+	//clear
+	free(mydata);
+
+
+
+
+
+
+	/*
 	int student;
 	int average;
 
@@ -104,6 +126,7 @@ void main(void) {
 
 	average = sumFunc(student);
 	printf("학생들의 평균점수는 %d 입니다.", average);
+	*/
 }
 /*
 void main(void) {
